@@ -1,0 +1,37 @@
+Build a healthcare platform that streamlines patient registration, appointment scheduling, and medical records, and learn to implement complex forms and SMS notifications.
+
+⭐ Appwrite: https://apwr.dev/JSM50
+🌟 Sentry - https://bit.ly/4abT6PG
+
+🎨 Healthcare App Figma Design - https://resource.jsmastery.pro/health...
+🤖 Special Discord Forum - https://resource.jsmastery.pro/health...
+
+🌟 Become a top 1% Next.js 14 developer: https://jsmastery.pro/next14
+🚀 Skyrocket your career: https://jsmastery.pro/dev-career-acce...
+
+📚 Materials/References:
+GitHub Repository (give it a star ⭐): https://github.com/adrianhajdin/healt...
+README (assets & code): https://github.com/adrianhajdin/healt...
+
+👋 Social Media:
+  / discord  
+  / jsmasterypro  
+  / javascriptmastery  
+  / javascriptmastery  
+  / adrianhajdin  
+
+💼 Business Inquiries: contact@jsmastery.pro
+
+Time Stamps 👇
+00:00:00 — Intro
+00:05:51 — Setup
+00:18:31 — HomePage
+00:59:20 — Appwrite
+01:21:52 — Registration Page
+02:39:15 — Appointment Page
+03:04:53 — Success Page
+03:19:27 — Admin Passcode Verification
+03:36:23 — Admin Dashboard
+04:46:07 — Sentry - Securing the App
+05:06:20 — SMS Notifications
+05:18:50 — Deployment
