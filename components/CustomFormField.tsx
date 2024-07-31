@@ -58,6 +58,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                             placeholder={placeholder}
                             {...field}
                             className="shad-input border-0"
+                            disabled={props.disabled}
                         />
                     </FormControl>
                 </div>
@@ -86,6 +87,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
                         value={field.value as PhoneValueType}
                         onChange={field.onChange}
                         className="input-phone"
+                        disabled={props.disabled}
                     />
                 </FormControl>
             )
@@ -149,7 +151,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
 }
 
 const CustomFormField = (props: CustomProps) => {
-    const { control, fieldType, name, label } = props;
+    const { control, fieldType, name, label} = props;
     return (
         <FormField
             control={control}

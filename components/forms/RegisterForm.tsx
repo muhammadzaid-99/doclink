@@ -127,6 +127,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                             placeholder="johndoe@doclink.com"
                             iconSrc="/assets/icons/email.svg"
                             iconAlt="email"
+                            disabled={true}
                         />
                         <CustomFormField
                             fieldType={FormFieldType.PHONE_INPUT}
@@ -134,6 +135,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                             name="phone"
                             label="Phone Number"
                             placeholder="0321-3456789"
+                            disabled={true}
                         />
                     </div>
 
