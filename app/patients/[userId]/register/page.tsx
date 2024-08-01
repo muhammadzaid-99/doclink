@@ -17,11 +17,11 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
       <section className="remove-scrollbar container">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
           <Image
-            src="/assets/icons/logo-full.svg"
+            src="/assets/icons/logo-full-dl.png"
             alt="DocLink"
-            width={1000}
-            height={1000}
-            className="mb-12 h-10 w-fit"
+            width={575}
+            height={187}
+            className="mb-12 h-12 w-fit"
           />
 
           <RegisterForm user={user} />

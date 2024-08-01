@@ -45,12 +45,11 @@ const PatientForm = () => {
 
         try {
             const userData = { name, email, phone };
-            console.log(userData)
             
             const user = await createUser(userData);
             console.log(user)
 
-            if (user.newUser)
+            if (user)
                 router.push(`/patients/${user.$id}/register`)
             else
                 console.log('Already exists')

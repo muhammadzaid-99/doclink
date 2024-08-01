@@ -11,7 +11,7 @@ const Admin = async () => {
         <div className="mx-auto flex max-w-7xl flex-col space-y-12">
             <header className="admin-header">
                 <Link href="/" className="cursor-pointer">
-                    <Image src="/assets/icons/logo-full.svg" alt="DocLink" width={162} height={32} className="h-8 w-fit" />
+                    <Image src="/assets/icons/logo-full-dl.png" alt="DocLink" width={162} height={32} className="h-10 w-fit" />
                 </Link>
                 <p className="text-16-semibold">
                     Admin Dashboard

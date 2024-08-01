@@ -17,11 +17,11 @@ export default function Home({searchParams} : SearchParamProps) {
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
           <Image
-            src="/assets/icons/logo-full.svg"
+            src="/assets/icons/logo-full-dl.png"
             alt="DocLink"
-            width={1000}
-            height={1000}
-            className="mb-12 h-10 w-fit"
+            width={575}
+            height={187}
+            className="mb-12 h-20 w-fit rounded-md"
           />
 
           <PatientForm />
@@ -40,9 +40,9 @@ export default function Home({searchParams} : SearchParamProps) {
         </div>
       </section>
       <Image
-      src="/assets/images/onboarding-img.png"
+      src="/assets/images/onboarding-img2.jpg"
       height={1000} width={1000} alt="Onboarding Image"
-      className="side-img max-w-[50%]"
+      className="side-img max-w-[50%] brightness-50"
       />
     </div>
   );

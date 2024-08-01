@@ -7,10 +7,7 @@ import { InputFile } from 'node-appwrite/file'
 
 export const createUser = async (user: CreateUserParams) => {
     try {
-        console.log(user)
         const newUser = await users.create(ID.unique(), user.email, user.phone, undefined, user.name);
-
-        console.log({ newUser });
 
         return parseStringify(newUser);
     } catch (error: any) {
