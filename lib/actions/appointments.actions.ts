@@ -1,15 +1,18 @@
 'use server'
 
 import { ID, Query } from "node-appwrite";
-import { APPOINTMENT_COLLECTION_ID, BUCKET_ID, DATABASE_ID, databases, ENDPOINT, PROJECT_ID } from "../appwrite.config";
-import { parseStringify } from "../utils";
+import { APPOINTMENT_COLLECTION_ID, BUCKET_ID, DATABASE_ID, databases, ENDPOINT, messaging, PROJECT_ID } from "../appwrite.config";
+import { formatDateTime, parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
+import { revalidatePath } from "next/cache";
+import { formatDate } from "react-datepicker/dist/date_utils";
 
 export const createAppointment = async (appointment: CreateAppointmentParams) => {
     try {
 
         const newAppointment = await databases.createDocument(DATABASE_ID!, APPOINTMENT_COLLECTION_ID!, ID.unique(), appointment);
 
+        revalidatePath('/admin')
         return parseStringify(newAppointment);
     } catch (error: any) {
         console.log(error);
@@ -58,5 +61,41 @@ export const getRecentAppointmentsList = async () => {
         return parseStringify(data);
     } catch (error: any) {
         console.log(error);
+    }
+}
+
+export const updateAppointment = async ({ appointmentId, userId, appointment, type }: UpdateAppointmentParams) => {
+    try {
+        const updatedAppointment = await databases.updateDocument(
+            DATABASE_ID!, APPOINTMENT_COLLECTION_ID!, appointmentId, appointment
+        )
+
+        if (!updatedAppointment) {
+            throw new Error('Appointment not found')
+        }
+
+        const smsMsg = `
+        Greetings, from DocLink.
+        ${type === 'schedule' ?
+                `Your appointment has been scheduled for ${formatDateTime(appointment.schedule).dateTime} with Dr. ${appointment.primaryPhysician}`
+                :
+                `We regret to inform you that appointment has been cancelled due to the following reason: ${appointment.cancellationReason} `} 
+        `
+        // turned off, phone number issue
+        // await sendSMSNotification(userId, smsMsg);
+        revalidatePath('/admin')
+        return parseStringify(updatedAppointment)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const sendSMSNotification = async (userId: string, content: string) => {
+    try {
+        const message = await messaging.createSms(ID.unique(), content, [], [userId]);
+
+        return parseStringify(message);
+    } catch (error) {
+        console.log(error)
     }
 }

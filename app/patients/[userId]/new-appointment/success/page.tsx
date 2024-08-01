@@ -4,13 +4,17 @@ import { getAppointment } from '@/lib/actions/appointments.actions';
 import { Doctors } from '@/constants';
 import { formatDateTime } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import * as Sentry from '@sentry/nextjs';
+import { getUser } from '@/lib/actions/patient.actions';
 
 const Success = async ({ params: { userId }, searchParams }: SearchParamProps) => {
-
+    const user = await getUser(userId);
+    Sentry.metrics.set("user_view_success", user.name);
+    
     const appointmentId = (searchParams?.appointmentId as string) || '';
     const appointment = await getAppointment(appointmentId);
     const doctor = Doctors.find(doctor => doctor.name === appointment.primaryPhysician);
-
+    
     return (
         <div className="flex h-screen max-h-screen px-[5%]">
             <div className="success-img">
@@ -48,7 +52,7 @@ const Success = async ({ params: { userId }, searchParams }: SearchParamProps) =
                 </section>
                 <Button variant="outline" className="shad-primary-btn" asChild>
                     <Link href={`/patients/${userId}/new-appointment`}>
-                    New Appointment
+                        New Appointment
                     </Link>
                 </Button>
                 <p className="copyright">&copy; 2024 DocLink. All rights reserved.</p>
